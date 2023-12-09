@@ -15,7 +15,7 @@ have miniconda installed first (check jeff heaton clip on my installation) with 
 
 # conda installation on ubuntu
 
-- install miniconda ach64 for arm ubuntu: https://docs.conda.io/projects/miniconda/en/latest/
+- install miniconda arch64 for arm ubuntu: https://docs.conda.io/projects/miniconda/en/latest/
 
 - to get ubuntu installation file run `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh` then `chmod +x` this file and run it as sudo, this is explained in the video clip listed above.
 
