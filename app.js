@@ -5,7 +5,7 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
 // tensorflow
 const { exec } = require("child_process");
@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
 });
 
 function checkFileType(file, cb) {
-  const filetypes = /jpeg|jpg/;
+  const filetypes = /jpeg|jpg|png|gif/;
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
   const mimetype = filetypes.test(file.mimetype);
 
@@ -61,18 +61,26 @@ app.get("/", function (req, res) {
 });
 
 app.post("/upload", upload.single("file"), (req, res, next) => {
-  const file = req.file;
-  if (!file) {
-    const error = new Error('Please upload a file');
-    error.status = 400;
-    return next(error);
+
+  var file = "";
+  try {
+    file = req.file;
+  } catch (e) {
+    if (file == "") {
+      let responseText =
+      "Bild konnte beim ersten Versuch nicht uploaded werden, bitte gleich nochmals versuchen!"
+      res.status(500).send(responseText);
+      return;
+    }
   }
 
-  if(req.files != "") { 
+  if(file != "") { 
     const command = `${condaEnvCommand} && python ${pythonScriptPath} ${req.file.filename}`;
     exec(command, (error, stdout, stderr) => {
       if (error) {
-        console.error(`Fehler beim Ausführen des Skripts: ${error}`);
+        let responseText =
+        "Bild konnte beim ersten Versuch nicht uploaded werden, bitte gleich nochmals versuchen!"
+        res.status(500).send(responseText);
         return;
       }
       let responseText = stdout.replace(/(?:\r\n|\r|\n)/g, "");
@@ -80,18 +88,20 @@ app.post("/upload", upload.single("file"), (req, res, next) => {
       res.statusMessage = responseText;
       res.send(responseText);
       if (stderr) {
-        console.error("Fehler im Python-Skript:");
-        console.error(stderr);
+        let responseText =
+        "Bild konnte beim ersten Versuch nicht uploaded werden, bitte gleich nochmals versuchen!"
+        res.status(500).send(responseText);        
+        return;
       }
     });
   }
 });
 
 app.use((err, req, res, next) => {
-  console.error(err.stack);
   let responseText =
   "Bild konnte beim ersten Versuch nicht uploaded werden, bitte gleich nochmals versuchen!"
-  res.status(err.status || 500).send(responseText);
+  res.status(500).send(responseText);
+  return;
 });
 
 app.listen(port, () => {
