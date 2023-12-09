@@ -56,3 +56,7 @@ have miniconda installed first (check jeff heaton clip on my installation) with 
 # run
 - call `http://localhost:8080` locally
 - on server call: `http://your-ip:5000`
+
+# demo
+
+- http://keepitnative.xyz
