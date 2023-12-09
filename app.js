@@ -19,7 +19,7 @@ if (process.env.NODE_ENV == "production") {
   condaPath = "~/miniconda3/bin/activate";
 } else {
   // development
-  condaActivateScript = "bash ~//miniconda3/etc/profile.d/conda.sh";
+  condaActivateScript = "bash ~/miniconda3/etc/profile.d/conda.sh";
   condaPath = "~/miniconda3/bin/activate";
 }
 
@@ -95,13 +95,6 @@ app.post("/upload", upload.single("file"), (req, res, next) => {
       }
     });
   }
-});
-
-app.use((err, req, res, next) => {
-  let responseText =
-  "Bild konnte beim ersten Versuch nicht uploaded werden, bitte gleich nochmals versuchen!"
-  res.status(500).send(responseText);
-  return;
 });
 
 app.listen(port, () => {
