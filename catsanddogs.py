@@ -26,9 +26,6 @@ def test():
     i = sys.argv[1]
     img_path = os.path.join(test_dir, '{}'.format(i))
     img = keras.utils.load_img(
-    img_path, target_size=image_size)
-
-    img = keras.utils.load_img(
        img_path, target_size=image_size
     )
     img_array = keras.utils.img_to_array(img)
