@@ -33,7 +33,9 @@ function App() {
       data: e.target.files[0],
     };
     setImage(img);
-    triggerSubmit();
+    setTimeout(function() {
+      triggerSubmit();
+    }, 2000);
   };
 
   const refSubmitButtom = useRef(null);
