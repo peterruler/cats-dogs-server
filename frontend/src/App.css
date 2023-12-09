@@ -1,0 +1,94 @@
+@media screen {
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+  }
+
+  .App {
+    margin-top: -100px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  #preview,
+  #status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #status {
+    position: relative;
+    top: 1vh;
+  }
+
+  main {
+    position: relative;
+    max-width: 40em;
+    width: 300px;
+    margin: 0 auto;
+    top: 2vh;
+    max-height: 40px;
+    overflow: hidden;
+  }
+
+  #image-output {
+    height: auto;
+    width: 25vw;
+  }
+
+  button {
+    display: none;
+  }
+
+  .fileContainer {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    background: forestgreen;
+    border-radius: .5em;
+    padding: .5em;
+    color: #fff;
+  }
+
+  .fileContainer [type=file] {
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+    cursor: pointer;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    margin-left: -12.5vw;
+  }
+
+  .loader {
+    position: absolute;
+    width: 66px;
+    height: 150px;
+    margin:23vh 48.5vw;
+    z-index: 100001;
+    display: flex;
+    justify-content: center;
+    visibility: hidden;
+  }
+}
