@@ -1,9 +1,12 @@
 import "./App.css";
 import { useState, useRef } from "react";
 
+// Change Server URI here:
+const endpointURI = 'http://keepitnative.xyz:5000';
+
 const Loader = () => {
   return (
-    <div id="loadinggif" className="loader">
+    <div className="loader">
       <img src="./loading.gif" alt="loading gif" width="64" height="66" />
     </div>
   );
@@ -17,7 +20,7 @@ function App() {
 
     let formData = new FormData();
     formData.append("file", image.data);
-    const response = await fetch("http://keepitnative.xyz:5000/upload", {
+    const response = await fetch(`${endpointURI}/upload`, {
       method: "POST",
       body: formData,
     });
@@ -33,6 +36,7 @@ function App() {
       data: e.target.files[0],
     };
     setImage(img);
+    displayLoader("show");
     setTimeout(function() {
       triggerSubmit();
     }, 2000);
@@ -41,14 +45,13 @@ function App() {
   const refSubmitButtom = useRef(null);
 
   const triggerSubmit = () => {
-    displayLoader("show");
     refSubmitButtom.current.click();
   };
 
   const displayLoader = (flag) => {
     let showHide = "hidden";
     if (flag === "show") {
-      showHide = "visible";
+      showHide = "visible"; // hidden
     }
     document.querySelector(".loader").style.visibility = showHide;
   };
