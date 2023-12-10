@@ -31,12 +31,12 @@ function App() {
   };
 
   const handleFileChange = (e) => {
+    displayLoader("show");
     const img = {
       preview: URL.createObjectURL(e.target.files[0]),
       data: e.target.files[0],
     };
     setImage(img);
-    displayLoader("show");
     setTimeout(function() {
       triggerSubmit();
     }, 2000);
