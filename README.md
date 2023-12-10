@@ -1,6 +1,6 @@
 # Cats and Dogs classification with image upload
 
-- Frontend is static compiled ReactJS
+- Frontend is static compiled ReactJS see `./frontend/src/App.js`
 - Backend is using Nodejs Express server that calls Python Script in a miniconda environment (no Python Django for now, because I prefer nodejs)
 
 - on M1 Macos run with `conda activate tensorflow`
@@ -23,7 +23,7 @@ have miniconda installed first (check jeff heaton clip on my installation) with 
 
 - (optional) conda addons on server do a `wget https://raw.githubusercontent.com/jeffheaton/t81_558_deep_learning/master/tools.yml`
 
-# conda commands the get tensorflow running on ubuntu, try:
+# conda commands to get tensorflow running on ubuntu, try:
 - once conca script has installed conda
 - `conda install -c conda-forge tensorflow`
 - `pip install pillow`
@@ -35,17 +35,30 @@ have miniconda installed first (check jeff heaton clip on my installation) with 
 
 # build
 
-- Frontend: `cd frontend && npm install && npm run build` alternative run `yarn`
+- Frontend: `cd frontend && npm install && npm run build` alternatively run `yarn` instead of npm install
 
 - Backend in current directory run a `npm install` or alternatively run `yarn`
 - do a `mkdir uploads` in the root directory
 
+
+# list of imporant files
+
+- `catsanddogs.py` the python script
+- `app.js` the node backend, upload and shellrun python
+- ./frontend/src/App.js - The ReactJS main frontend
+-  you must change:
+- `const endpointURI = 'http://keepitnative.xyz:5000';` 
+- to sth. that suits your server: `const endpointURI = 'http://localhost:8080';` and run 
+`npm run build` again in the frontend directory
+- `./frontend/src/App.css` - here, the frontend styles are defined
+
 # .env file
+
 - you must create a `.env` file in this directory with content like `NODE_ENV=development` or `NODE_ENV=production` use production on a linux server
 
 # run
 
-- run frontend standalone just for test pre running: `cd frontend && npm start` press `Ctrl + C` to stop / kill process
+- run frontend standalone just for test pre running: `cd frontend && npm start` press `Ctrl + C` to stop / kill process, first in order to use forever
 
 
 - install forever nodejs to run whole app in background `npm install forever -g`
@@ -53,7 +66,8 @@ have miniconda installed first (check jeff heaton clip on my installation) with 
 - run `forever list` to get the id of the background process
 - run without sudo `forever stop 0` or whatever id instead of `0`
 
-# run
+# run in a webbrowser
+
 - call `http://localhost:8080` locally
 - on server call: `http://your-ip:5000`
 
