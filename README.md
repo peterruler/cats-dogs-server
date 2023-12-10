@@ -6,7 +6,7 @@ Backend is in `./app.js` and 'ai' file is located in `./catsanddogs.py`
 (no Python Django for now, because I prefer nodejs)
 
 - on M1 Macos run with `conda activate tensorflow`
-have miniconda installed first (check jeff heaton clip on my installation) with env tensorflow, then do a `node app.js` to run the application locally on mac e.g. first change URI path in `./frontend/src/App.js` to get it running locally
+have miniconda installed first (check jeff heaton clip on the installation) with env tensorflow, then do a `node app.js` to run the application locally on mac e.g. first change URI path in `./frontend/src/App.js` to get it running locally
 
 # prerequisites
 
