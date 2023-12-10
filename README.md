@@ -28,7 +28,7 @@ have miniconda installed first (check jeff heaton clip on my installation) with 
 # conda commands to get tensorflow running on ubuntu, try:
 - once conda script has installed conda
 - `conda install -c conda-forge tensorflow`
-- `pip install pillow`
+- `pip install pillow` with pip installed via apt-get e.g. (pip is the python package manager)
 - `conda env update --file tools.yml` with tools.yml (optional) from `_Project` folder in this repository 
 
 # to test if tensorflow is installed on ubuntu do a
