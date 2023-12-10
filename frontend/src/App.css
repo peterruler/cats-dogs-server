@@ -78,13 +78,17 @@
   }
 
   .loader {
-    position: absolute;
-    width: 66px;
-    height: 150px;
-    margin:23vh 48.5vw;
-    z-index: 100001;
     display: flex;
+    align-items: center;
     justify-content: center;
     visibility: hidden;
+    top:19vh;
+    z-index: 100001;
+    position: relative;
+  }
+
+  .loader img {
+    width: 66px;
+    height: 66px;
   }
 }
