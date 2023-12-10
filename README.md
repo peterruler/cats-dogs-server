@@ -13,7 +13,7 @@ have miniconda installed first (check jeff heaton clip on my installation) with 
 - Have nodejs & python with miniconda & tensorflow including keras installed
 - Miniconda installation on Mac M1: https://www.youtube.com/watch?v=o4-bI_iZKPA
 - Miniconda installation Ubuntu: https://www.youtube.com/watch?v=dj-Jntz-74g&t=339s
-- Jupyter isnt needed on server, you can skip this commands
+- Jupyter isn't needed on server, you can skip this commands
 
 # conda installation on ubuntu
 
