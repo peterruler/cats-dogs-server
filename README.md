@@ -1,14 +1,16 @@
 # Cats and Dogs classification with image upload
 
 - Frontend is static compiled ReactJS see `./frontend/src/App.js`
-- Backend is using Nodejs Express server that calls Python Script in a miniconda environment (no Python Django for now, because I prefer nodejs)
+- Backend is using Nodejs Express server that calls Python Script in a miniconda environment
+Backend is in `./app.js` and 'ai' file is located in `./catsanddogs.py`
+(no Python Django for now, because I prefer nodejs)
 
 - on M1 Macos run with `conda activate tensorflow`
-have miniconda installed first (check jeff heaton clip on my installation) with env tensorflow, then do a `node app.js` to run the application locally on mac e.g.
+have miniconda installed first (check jeff heaton clip on my installation) with env tensorflow, then do a `node app.js` to run the application locally on mac e.g. first change URI path in `./frontend/src/App.js` to get it running locally
 
 # prerequisites
 
-- Have nodejs & python with miniconda & tensorflow  & keras installed
+- Have nodejs & python with miniconda & tensorflow including keras installed
 - Miniconda installation on Mac M1: https://www.youtube.com/watch?v=o4-bI_iZKPA
 - Miniconda installation Ubuntu: https://www.youtube.com/watch?v=dj-Jntz-74g&t=339s
 - Jupyter isnt needed on server, you can skip this commands
@@ -24,7 +26,7 @@ have miniconda installed first (check jeff heaton clip on my installation) with 
 - (optional) conda addons on server do a `wget https://raw.githubusercontent.com/jeffheaton/t81_558_deep_learning/master/tools.yml`
 
 # conda commands to get tensorflow running on ubuntu, try:
-- once conca script has installed conda
+- once conda script has installed conda
 - `conda install -c conda-forge tensorflow`
 - `pip install pillow`
 - `conda env update --file tools.yml` with tools.yml (optional) from `_Project` folder in this repository 
