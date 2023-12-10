@@ -46,7 +46,7 @@ have miniconda installed first (check jeff heaton clip on my installation) with 
 # list of important files
 
 - `catsanddogs.py` the python script
-- `app.js` the node backend, upload and shellrun python
+- `app.js` the node backend, upload and shell run of the python script
 - ./frontend/src/App.js - The ReactJS main frontend
 -  you must change:
 - `const endpointURI = 'http://keepitnative.xyz:5000';` 
