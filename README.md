@@ -43,7 +43,7 @@ have miniconda installed first (check jeff heaton clip on my installation) with 
 - do a `mkdir uploads` in the root directory
 
 
-# list of imporant files
+# list of important files
 
 - `catsanddogs.py` the python script
 - `app.js` the node backend, upload and shellrun python
