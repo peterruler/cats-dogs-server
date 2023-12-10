@@ -40,7 +40,7 @@ have miniconda installed first (check jeff heaton clip on my installation) with 
 - Frontend: `cd frontend && npm install && npm run build` alternatively run `yarn` instead of npm install
 
 - Backend in current directory run a `npm install` or alternatively run `yarn`
-- do a `mkdir uploads` in the root directory
+- you must do a `mkdir uploads` in the root directory (this is the folder where the uploaded images are stored)
 
 
 # list of important files
