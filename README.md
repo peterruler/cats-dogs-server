@@ -2,7 +2,7 @@
 
 # explanation
 
-- The Frontend is ReactJS in the frontend directpry see `./frontend/src/App.js`
+- The Frontend is ReactJS in the frontend directory see `./frontend/src/App.js`
 - Backend is using Nodejs Express server that calls Python Script in a miniconda environment
 Backend is in `./app.js` and 'ai' file is located in `./catsanddogs.py`
 (no Python Django for now, because I prefer nodejs)
