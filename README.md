@@ -36,7 +36,7 @@ have miniconda installed first (check jeff heaton clip on the installation) with
 
 - once conda script has installed conda
 - `conda install -c conda-forge tensorflow`
-- you cann install tensorflow via calling `conda install tensorflow` and `conda install pip` eventually `conda install pillow`
+- you can install tensorflow via calling `conda install tensorflow` and `conda install pip` eventually `conda install pillow`
 - `pip install pillow` with pip installed via conda e.g. (pip is the python package manager)
 - `conda env update --file tools.yml` with tools.yml (optional) from `_Project` folder in this repository 
 
