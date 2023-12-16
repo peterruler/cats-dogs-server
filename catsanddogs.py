@@ -6,8 +6,6 @@ import sys
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
-image_size = (180, 180)
-
 # load json and create model
 json_file = open('model.json', 'r')
 loaded_model_json = json_file.read()
@@ -21,10 +19,10 @@ loaded_model.load_weights("model.h5")
 loaded_model.compile(loss='binary_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
 
 def test():
-    isa = ''
     test_dir = "./uploads"
     i = sys.argv[1]
     img_path = os.path.join(test_dir, '{}'.format(i))
+    image_size = (180, 180)
     img = keras.utils.load_img(
        img_path, target_size=image_size
     )

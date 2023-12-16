@@ -4,6 +4,10 @@ dotenv.config();
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
+const fs = require("fs");
+const util = require("util");
+const unlinkFile = util.promisify(fs.unlink);
+
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -48,7 +52,7 @@ function checkFileType(file, cb) {
 
 var upload = multer({
   storage: storage,
-  limits: { fileSize: 100000000 },
+  limits: { fileSize: 10000000 },
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   },
@@ -61,36 +65,33 @@ app.get("/", function (req, res) {
 });
 
 app.post("/upload", upload.single("file"), (req, res, next) => {
-
   var file = "";
   try {
     file = req.file;
   } catch (e) {
     if (file == "") {
       let responseText =
-      "Bild konnte beim ersten Versuch nicht uploaded werden, bitte gleich nochmals versuchen!"
+        "Bild konnte beim ersten Versuch nicht uploaded werden, bitte gleich nochmals versuchen!";
       res.status(500).send(responseText);
       return;
     }
   }
 
-  if(file != "") { 
+  if (file != "") {
     const command = `${condaEnvCommand} && python ${pythonScriptPath} ${req.file.filename}`;
     exec(command, (error, stdout, stderr) => {
       if (error) {
-        let responseText =
-        "Bild konnte beim ersten Versuch nicht uploaded werden, bitte gleich nochmals versuchen!"
+        let responseText = "Fehler beim Scriptaufruf";
         res.status(500).send(responseText);
         return;
       }
       let responseText = stdout.replace(/(?:\r\n|\r|\n)/g, "");
-      console.log(responseText);
       res.statusMessage = responseText;
+      unlinkFile("./uploads/" + req.file.filename);
       res.send(responseText);
       if (stderr) {
-        let responseText =
-        "Bild konnte beim ersten Versuch nicht uploaded werden, bitte gleich nochmals versuchen!"
-        res.status(500).send(responseText);        
+        let responseText = "Fehler beim Scriptaufruf";
+        res.status(500).send(responseText);
         return;
       }
     });
