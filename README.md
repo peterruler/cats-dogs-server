@@ -26,7 +26,7 @@
 # conda installation on ubuntu
 
 - have miniconda installed first (check jeff heaton clip on the installation) with env tensorflow.
-- If you have an ARM processor e.g. install miniconda arch64 for arm ubuntu (for intel this doesn't work! choose the suiting installer script): https://docs.conda.io/projects/miniconda/en/latest/
+- If you have an ARM processor e.g. install miniconda arch64 for arm ubuntu. For intel based machines this doesn't work! choose the suiting installer script under the followind page: https://docs.conda.io/projects/miniconda/en/latest/
 - to get ubuntu installation file when having an ARM machine, run `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh` then `chmod +x` this file and run it as sudo, this is explained in the video clip listed above.
 - see https://github.com/jeffheaton/t81_558_deep_learning/blob/master/install/tensorflow-install-jul-2020.ipynb for the needed commands
 - (optional) conda addons on server do a `wget https://raw.githubusercontent.com/jeffheaton/t81_558_deep_learning/master/tools.yml`
