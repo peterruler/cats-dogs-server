@@ -62,11 +62,10 @@ app.get("/", function (req, res) {
 
 app.post("/upload", upload.single("file"), (req, res, next) => {
   var file = "";
-
+  let responseText = "Nur JPG ist erlaubt!";
   try {
     file = req.file;
 
-    let responseText = "Nur JPG ist erlaubt!";
     let filetypes = /jpeg|jpg/;
     let extname = filetypes.test(path.extname(file.originalname).toLowerCase());
 
