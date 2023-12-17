@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState, useRef } from "react";
+import loader from "./loading.gif"
 
 // Change Server URI here:
 const endpointURI = 'http://keepitnative.xyz:5000';
@@ -7,7 +8,7 @@ const endpointURI = 'http://keepitnative.xyz:5000';
 const Loader = () => {
   return (
     <div className="loader">
-      <img src="./loading.gif" alt="loading gif" width="64" height="66" />
+      <img src={loader} alt="loading gif" width="140" height="42" />
     </div>
   );
 };

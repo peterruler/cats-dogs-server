@@ -88,7 +88,8 @@
   }
 
   .loader img {
-    width: 66px;
-    height: 66px;
+    width: 140px;
+    height: 42px;
+    background: #fff;
   }
 }
