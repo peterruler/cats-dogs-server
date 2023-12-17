@@ -39,20 +39,22 @@ const storage = multer.diskStorage({
 });
 
 var upload = multer({
-    storage: storage,
-    limits: { fileSize: 10000000 },
-    fileFilter: function (req, file, cb) {
-      const filetypes = /jpeg|jpg|gif|png/;
-      const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-      const mimetype = filetypes.test(file.mimetype);
-    
-      if (mimetype && extname) {
-        cb(null, true);
-      } else {
-        cb(new Error('Only jpeg images are allowed!'), false);
-      }
+  storage: storage,
+  limits: { fileSize: 10000000 },
+  fileFilter: function (req, file, cb) {
+    const filetypes = /jpeg|jpg|gif|png/;
+    const extname = filetypes.test(
+      path.extname(file.originalname).toLowerCase()
+    );
+    const mimetype = filetypes.test(file.mimetype);
+
+    if (mimetype && extname) {
+      cb(null, true);
+    } else {
+      cb(new Error("Only jpeg images are allowed!"), false);
     }
-  });
+  },
+});
 
 app.use(express.static(path.join(__dirname, "frontend/build")));
 
@@ -66,19 +68,18 @@ app.post("/upload", upload.single("file"), (req, res, next) => {
   res.statusMessage = responseText;
   try {
     file = req.file;
-s
+    s;
     let filetypes = /jpeg|jpg/;
     let extname = filetypes.test(path.extname(file.originalname).toLowerCase());
 
     if (!extname) {
-        res.status(200).send(responseText);
-        return;
+      res.status(200).send(responseText);
+      return;
     }
   } catch (e) {
-        res.status(200).send(responseText);
-        return;
+    res.status(200).send(responseText);
+    return;
   }
-
 
   if (file != "") {
     const command = `${condaEnvCommand} && python ${pythonScriptPath} ${req.file.filename}`;
