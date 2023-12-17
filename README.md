@@ -46,7 +46,7 @@ On M1 Macos run Python tensorflow scipt in a terminal with `conda activate tenso
 
 # build
 
-- Frontend: You must make a build of the reactjs app. But first change URI.
+- Frontend: You must install the dependencies and then make a build of the reactjs app. But first change URI.
 - in `./frontend/src/App.js` you must change:
 - `const endpointURI = 'http://keepitnative.xyz:5000';` 
 - to sth. that suits your server: `const endpointURI = 'http://localhost:8080';` and run 
