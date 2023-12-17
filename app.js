@@ -68,7 +68,6 @@ app.post("/upload", upload.single("file"), (req, res, next) => {
   res.statusMessage = responseText;
   try {
     file = req.file;
-    s;
     let filetypes = /jpeg|jpg/;
     let extname = filetypes.test(path.extname(file.originalname).toLowerCase());
 
