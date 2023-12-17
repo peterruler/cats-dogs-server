@@ -2,9 +2,9 @@
 
 # explanation
 
-- The Frontend is ReactJS in the frontend directory see `./frontend/src/App.js`
-- Backend is using Nodejs Express server that calls Python Script in a miniconda environment
-Backend is in `./app.js` and 'ai' file is located in `./catsanddogs.py`
+- The frontend is ReactJS in the frontend directory see `./frontend/src/App.js`
+- Backend is using nodejs express server that calls Python Script in a miniconda environment
+- Backend is in `./app.js` and 'ai' file is located in `./catsanddogs.py`
 (no Python Django for now, because I prefer nodejs)
 
 # list of important files
@@ -18,21 +18,25 @@ Backend is in `./app.js` and 'ai' file is located in `./catsanddogs.py`
 
 # prerequisites
 
-- Have nodejs & python with miniconda & tensorflow including keras installed
+- First have nodejs & python with miniconda & tensorflow including keras installed
 - Miniconda installation on Mac M1: https://www.youtube.com/watch?v=o4-bI_iZKPA
 - Miniconda installation Ubuntu: https://www.youtube.com/watch?v=dj-Jntz-74g&t=339s
 - Jupyter isn't needed on server, you can skip these commands
 
 # conda installation on ubuntu
 
-- on M1 Macos run with `conda activate tensorflow`
-have miniconda installed first (check jeff heaton clip on the installation) with env tensorflow, then do a `node app.js` to run the application locally on mac e.g. first change URI path in `./frontend/src/App.js` to get it running locally
-- install miniconda arch64 for arm ubuntu (for intel this doesn't work! choose the suiting installer script): https://docs.conda.io/projects/miniconda/en/latest/
-- to get ubuntu installation file run `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh` then `chmod +x` this file and run it as sudo, this is explained in the video clip listed above.
+- have miniconda installed first (check jeff heaton clip on the installation) with env tensorflow.
+- If you have an ARM processor e.g. install miniconda arch64 for arm ubuntu (for intel this doesn't work! choose the suiting installer script): https://docs.conda.io/projects/miniconda/en/latest/
+- to get ubuntu installation file when having an ARM machine, run `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh` then `chmod +x` this file and run it as sudo, this is explained in the video clip listed above.
 - see https://github.com/jeffheaton/t81_558_deep_learning/blob/master/install/tensorflow-install-jul-2020.ipynb for the needed commands
 - (optional) conda addons on server do a `wget https://raw.githubusercontent.com/jeffheaton/t81_558_deep_learning/master/tools.yml`
+On M1 Macos run Python tensorflow scipt in a terminal with `conda activate tensorflow`.
 
-# conda commands to get tensorflow running on ubuntu, try:
+# to test if tensorflow is installed on ubuntu do a
+
+- `cd ./_Project && python check.py`
+
+# conda commands to get tensorflow running on ubuntu:
 
 - once conda script has installed conda
 - `conda install -c conda-forge tensorflow`
@@ -40,13 +44,12 @@ have miniconda installed first (check jeff heaton clip on the installation) with
 - `pip install pillow` with pip installed via conda e.g. (pip is the python package manager)
 - `conda env update --file tools.yml` with tools.yml (optional) from `_Project` folder in this repository 
 
-# to test if tensorflow is installed on ubuntu do a
-
-- `cd ./_Project && python check.py`
-
 # build
 
-- Frontend: `cd frontend && npm install && npm run build` alternatively run `yarn` instead of npm install
+- Frontend: 
+Change `./frontend/src/App.js` the URI path and then build frontend
+do a `npm run build`.
+`cd frontend && npm install && npm run build` alternatively run `yarn` instead of npm install
 - Backend in current directory run a `npm install` or alternatively run `yarn`
 - you must do a `mkdir uploads` in the root directory (this is the folder where the uploaded images are stored)
 - in `./frontend/src/App.js` you must change:
