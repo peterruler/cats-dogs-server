@@ -32,10 +32,6 @@
 - (optional) conda addons on server do a `wget https://raw.githubusercontent.com/jeffheaton/t81_558_deep_learning/master/tools.yml`
 On M1 Macos run Python tensorflow scipt in a terminal with `conda activate tensorflow`.
 
-# to test if tensorflow is installed on ubuntu do a
-
-- `cd ./_Project && python check.py`
-
 # conda commands to get tensorflow running on ubuntu:
 
 - once conda script has installed conda
@@ -43,6 +39,10 @@ On M1 Macos run Python tensorflow scipt in a terminal with `conda activate tenso
 - you can install tensorflow via calling `conda install tensorflow` and `conda install pip` eventually `conda install pillow`
 - `pip install pillow` with pip installed via conda e.g. (pip is the python package manager)
 - `conda env update --file tools.yml` with tools.yml (optional) from `_Project` folder in this repository 
+
+# to test if tensorflow is installed on ubuntu do a
+
+- `cd ./_Project && python check.py`
 
 # build
 
