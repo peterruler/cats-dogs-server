@@ -73,6 +73,7 @@ app.post("/upload", upload.single("file"), (req, res, next) => {
     let extname = filetypes.test(path.extname(file.originalname).toLowerCase());
 
     if (!extname) {
+      unlinkFile("./uploads/" + req.file.filename);
       res.status(200).send(responseText);
       return;
     }
