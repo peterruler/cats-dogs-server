@@ -38,25 +38,21 @@ const storage = multer.diskStorage({
   },
 });
 
-function checkFileType(file, cb) {
-  const filetypes = /jpeg|jpg/;
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  const mimetype = filetypes.test(file.mimetype);
-
-  if (mimetype && extname) {
-    return cb(null, true);
-  } else {
-    cb("Please upload jpeg images only");
-  }
-}
-
 var upload = multer({
-  storage: storage,
-  limits: { fileSize: 10000000 },
-  fileFilter: function (req, file, cb) {
-    checkFileType(file, cb);
-  },
-});
+    storage: storage,
+    limits: { fileSize: 10000000 },
+    fileFilter: function (req, file, cb) {
+      const filetypes = /jpeg|jpg|gif|png/;
+      const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+      const mimetype = filetypes.test(file.mimetype);
+    
+      if (mimetype && extname) {
+        cb(null, true);
+      } else {
+        cb(new Error('Only jpeg images are allowed!'), false);
+      }
+    }
+  });
 
 app.use(express.static(path.join(__dirname, "frontend/build")));
 
@@ -66,16 +62,24 @@ app.get("/", function (req, res) {
 
 app.post("/upload", upload.single("file"), (req, res, next) => {
   var file = "";
+
   try {
     file = req.file;
-  } catch (e) {
-    if (file == "") {
-      let responseText =
-        "Bild konnte beim ersten Versuch nicht uploaded werden, bitte gleich nochmals versuchen!";
-      res.status(500).send(responseText);
-      return;
+
+    let responseText = "Nur JPG ist erlaubt!";
+    let filetypes = /jpeg|jpg/;
+    let extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+
+    if (!extname) {
+        res.statusMessage = responseText;
+        res.status(200).send(responseText);
+        return;
     }
+  } catch (e) {
+        res.status(200).send(responseText);
+        return;
   }
+
 
   if (file != "") {
     const command = `${condaEnvCommand} && python ${pythonScriptPath} ${req.file.filename}`;
@@ -96,6 +100,11 @@ app.post("/upload", upload.single("file"), (req, res, next) => {
       }
     });
   }
+});
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(200).send(err.message);
 });
 
 app.listen(port, () => {
