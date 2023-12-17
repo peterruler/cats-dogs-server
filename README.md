@@ -47,14 +47,15 @@ On M1 Macos run Python tensorflow scipt in a terminal with `conda activate tenso
 # build
 
 - Frontend: 
-Change `./frontend/src/App.js` the URI path and then build frontend
-do a `npm run build`.
-`cd frontend && npm install && npm run build` alternatively run `yarn` instead of npm install
-- Backend in current directory run a `npm install` or alternatively run `yarn`
-- you must do a `mkdir uploads` in the root directory (this is the folder where the uploaded images are stored)
+Change `./frontend/src/App.js` the URI path in the header and 
+
 - in `./frontend/src/App.js` you must change:
 - `const endpointURI = 'http://keepitnative.xyz:5000';` 
 - to sth. that suits your server: `const endpointURI = 'http://localhost:8080';` and run 
+- then build frontend by doing a `npm run build`.
+- `cd frontend && npm install && npm run build` alternatively run `yarn` instead of npm install
+- Backend in current directory run a `npm install` or alternatively run `yarn`
+- you must do a `mkdir uploads` in the root directory (this is the folder where the uploaded images are stored)
 `npm run build` again in the frontend directory
 
 # .env file
