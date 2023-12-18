@@ -1,9 +1,9 @@
 import "./App.css";
 import { useState, useRef } from "react";
-import loader from "./loading.gif"
+import loader from "./loading.gif";
 
 // Change Server URI here:
-const endpointURI = 'http://keepitnative.xyz:5000';
+const endpointURI = "http://keepitnative.xyz:5000";
 
 const Loader = () => {
   return (
@@ -38,7 +38,7 @@ function App() {
       data: e.target.files[0],
     };
     setImage(img);
-    setTimeout(function() {
+    setTimeout(function () {
       triggerSubmit();
     }, 2000);
   };
@@ -52,7 +52,7 @@ function App() {
   const displayLoader = (flag) => {
     let showHide = "hidden";
     if (flag === "show") {
-      showHide = "visible"; // hidden
+      showHide = "visible";
     }
     document.querySelector(".loader").style.visibility = showHide;
   };

@@ -15,19 +15,19 @@ const port = process.env.PORT || 8080;
 const { exec } = require("child_process");
 const pythonScriptPath = "catsanddogs.py";
 var env = "tensorflow";
-var condaActivateScript = "";
 var condaPath = "";
+var condaActivateScript = "";
 
 if (process.env.NODE_ENV == "production") {
-  condaActivateScript = "bash ~/miniconda3/etc/profile.d/conda.sh";
-  condaPath = "~/miniconda3/bin/activate";
+  condaPath = "bash ~/miniconda3/etc/profile.d/conda.sh";
+  condaActivateScript = "~/miniconda3/bin/activate";
 } else {
   // development
-  condaActivateScript = "bash ~/miniconda3/etc/profile.d/conda.sh";
-  condaPath = "~/miniconda3/bin/activate";
+  condaPath = "bash ~/miniconda3/etc/profile.d/conda.sh";
+  condaActivateScript = "~/miniconda3/bin/activate";
 }
 
-const condaEnvCommand = `${condaActivateScript} ${condaPath} ${env}`;
+const condaEnvCommand = `${condaPath} ${condaActivateScript} ${env}`;
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -40,7 +40,7 @@ const storage = multer.diskStorage({
 
 var upload = multer({
   storage: storage,
-  limits: { fileSize: 1024*1024*10},
+  limits: { fileSize: 1024 * 1024 * 10 },
   fileFilter: function (req, file, cb) {
     const filetypes = /jpeg|jpg|gif|png/;
     const extname = filetypes.test(
@@ -104,7 +104,9 @@ app.post("/upload", upload.single("file"), (req, res, next) => {
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(200).send(err.message);
+  const responseText = err.message;
+  res.statusMessage = responseText;
+  res.status(200).send(responseText);
 });
 
 app.listen(port, () => {
