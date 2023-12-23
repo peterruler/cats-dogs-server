@@ -91,7 +91,6 @@ app.post("/upload", upload.single("file"), (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  console.error(err.stack);
   const responseText = err.message;
   res.statusMessage = responseText;
   res.status(200).send(responseText);
