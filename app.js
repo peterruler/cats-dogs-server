@@ -60,11 +60,11 @@ app.get("/", function (req, res) {
 
 app.post("/upload", upload.single("file"), (req, res, next) => {
   var file = "";
-  let responseText = "Bildname konnte nicht ermittelt werden!";
-  res.statusMessage = responseText;
   try {
     file = req.file;
   } catch (e) {
+    let responseText = "Bildname konnte nicht ermittelt werden!";
+    res.statusMessage = responseText;
     res.status(200).send(responseText);
     return;
   }
@@ -74,6 +74,7 @@ app.post("/upload", upload.single("file"), (req, res, next) => {
     exec(command, (error, stdout, stderr) => {
       if (error) {
         let responseText = "Fehler beim Scriptaufruf";
+        res.statusMessage = responseText;
         res.status(500).send(responseText);
         return;
       }
@@ -83,6 +84,7 @@ app.post("/upload", upload.single("file"), (req, res, next) => {
       res.send(responseText);
       if (stderr) {
         let responseText = "Fehler beim Scriptaufruf";
+        res.statusMessage = responseText;
         res.status(500).send(responseText);
         return;
       }
