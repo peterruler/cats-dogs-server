@@ -42,16 +42,12 @@ var upload = multer({
   storage: storage,
   limits: { fileSize: 1024 * 1024 * 10 },
   fileFilter: function (req, file, cb) {
-    const filetypes = /jpeg|jpg|gif|png/;
-    const extname = filetypes.test(
-      path.extname(file.originalname).toLowerCase()
-    );
-    const mimetype = filetypes.test(file.mimetype);
-
-    if (mimetype && extname) {
+    const allowedExtensions = ['.jpg', '.jpeg'];
+    const extname = path.extname(file.originalname).toLowerCase();
+    if (allowedExtensions.includes(extname)) {
       cb(null, true);
     } else {
-      cb(new Error("Only jpeg images are allowed!"), false);
+      cb(new Error("Only jpeg images are allowed!"));
     }
   },
 });
@@ -64,18 +60,10 @@ app.get("/", function (req, res) {
 
 app.post("/upload", upload.single("file"), (req, res, next) => {
   var file = "";
-  let responseText = "Nur JPG ist erlaubt!";
+  let responseText = "Bildname konnte nicht ermittelt werden!";
   res.statusMessage = responseText;
   try {
     file = req.file;
-    let filetypes = /jpeg|jpg/;
-    let extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-
-    if (!extname) {
-      unlinkFile("./uploads/" + req.file.filename);
-      res.status(200).send(responseText);
-      return;
-    }
   } catch (e) {
     res.status(200).send(responseText);
     return;
