@@ -47,7 +47,7 @@ var upload = multer({
     if (allowedExtensions.includes(extname)) {
       cb(null, true);
     } else {
-      cb(new Error("Only jpeg images are allowed!"));
+      cb(new Error("Nur jpeg Bilder sind erlaubt!"));
     }
   },
 });
