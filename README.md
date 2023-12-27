@@ -75,3 +75,8 @@ On M1 Macos run Python tensorflow script in a terminal with `conda activate tens
 # demo
 
 - http://keepitnative.xyz:5000
+
+# train keras model repository can be found on
+
+- https://github.com/peterruler/cats_and_dogs_keras
+- check jupyter notebook for documentation
