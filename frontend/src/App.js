@@ -3,8 +3,8 @@ import { useState, useRef } from "react";
 import loader from "./loading.gif";
 
 // Change Server URI here:
-// const endpointURI = "http://keepitnative.xyz:5000";
-const endpointURI = "http://localhost:8080";
+const endpointURI = "http://keepitnative.xyz:5000";
+// const endpointURI = "http://localhost:8080";
 
 const Loader = () => {
   return (
