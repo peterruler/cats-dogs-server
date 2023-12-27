@@ -3,7 +3,8 @@ import { useState, useRef } from "react";
 import loader from "./loading.gif";
 
 // Change Server URI here:
-const endpointURI = "http://keepitnative.xyz:5000";
+// const endpointURI = "http://keepitnative.xyz:5000";
+const endpointURI = "http://localhost:8080";
 
 const Loader = () => {
   return (
@@ -50,11 +51,11 @@ function App() {
   };
 
   const displayLoader = (flag) => {
-    let showHide = "hidden";
+    let showHide = "none";
     if (flag === "show") {
-      showHide = "visible";
+      showHide = "block";
     }
-    document.querySelector(".loader").style.visibility = showHide;
+    document.querySelector(".loader").style.display = showHide;
   };
 
   return (
@@ -68,7 +69,6 @@ function App() {
           )}
         </div>
         <form id="form" onSubmit={handleSubmit} encType="multipart/form-data">
-          <main>
             <label className="fileContainer">
               Bild aufnehmen
               <input
@@ -79,7 +79,6 @@ function App() {
                 onChange={handleFileChange}
               />
             </label>
-          </main>
           <button hidden={true} ref={refSubmitButtom} type={"submit"} />
         </form>
         <div id="status">{status && <h4>{status}</h4>}</div>

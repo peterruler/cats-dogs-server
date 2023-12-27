@@ -10,35 +10,30 @@
     background-color: #fff;
   }
 
-  h1 {
-    text-align: center;
+  .App  {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    position: relative;
   }
 
-  #preview,
-  #status {
-    display: flex;
-    align-items: center;
+  form {
+    justify-content: center;
+    width: 50vw;
+    margin:0 auto;
+  }
+
+  #preview {
+    margin-bottom:5vh;
+  }
+
+  #preview, #status {
+    display:flex;
     justify-content: center;
   }
 
-  #status {
-    position: relative;
-    top: 1vh;
-  }
-
-  main {
-    position: relative;
-    max-width: 40em;
-    width: 300px;
-    margin: 0 auto;
-    top: 2vh;
-    max-height: 40px;
-    overflow: hidden;
-  }
-
-  #image-output {
-    height: auto;
-    width: 25vw;
+  h1 {
+    text-align: center;
   }
 
   button {
@@ -70,24 +65,21 @@
     cursor: pointer;
   }
 
-  footer {
-    position: absolute;
-    bottom: 5vh;
-    left: 50%;
-    margin-left: -12.5vw;
-  }
-
   .loader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    visibility: hidden;
-    top:19vh;
+    display: none;
+    top:0px;
     z-index: 100001;
     position: relative;
+    width: 100vw;
+    height:100vh;
+    background-color: rgba(255, 255, 255, 1);
   }
 
   .loader img {
+    position:relative;
+    left:50%;
+    top:20vh;
+    margin-left:-70px;
     width: 140px;
     height: 42px;
     background: #fff;
