@@ -3,13 +3,21 @@ import { useState, useRef } from "react";
 import loader from "./loading.gif";
 
 // Change Server URI here:
-const endpointURI = "http://keepitnative.xyz:5000";
-// const endpointURI = "http://localhost:8080";
+// const endpointURI = "http://keepitnative.xyz:5000";
+const endpointURI = "http://localhost:8080";
 
 const Loader = () => {
   return (
     <div className="loader">
       <img src={loader} alt="loading gif" width="140" height="42" />
+    </div>
+  );
+};
+
+const Footer = () => {
+  return (
+    <div className="footer">
+      Peter Strössler - © {new Date().getFullYear()}, all rights reserved.
     </div>
   );
 };
@@ -51,11 +59,11 @@ function App() {
   };
 
   const displayLoader = (flag) => {
-    let showHide = "none";
+    let showHide = "hidden";
     if (flag === "show") {
-      showHide = "block";
+      showHide = "visible";
     }
-    document.querySelector(".loader").style.display = showHide;
+    document.querySelector(".loader").style.visibility = showHide;
   };
 
   return (
@@ -69,20 +77,21 @@ function App() {
           )}
         </div>
         <form id="form" onSubmit={handleSubmit} encType="multipart/form-data">
-            <label className="fileContainer">
-              Bild aufnehmen
-              <input
-                id="image-file-choose"
-                type="file"
-                accept="image/*"
-                capture="user/"
-                onChange={handleFileChange}
-              />
-            </label>
+          <label className="fileContainer">
+            Bild aufnehmen
+            <input
+              id="image-file-choose"
+              type="file"
+              accept="image/*"
+              capture="user/"
+              onChange={handleFileChange}
+            />
+          </label>
           <button hidden={true} ref={refSubmitButtom} type={"submit"} />
         </form>
         <div id="status">{status && <h4>{status}</h4>}</div>
       </div>
+      <Footer />
     </>
   );
 }
