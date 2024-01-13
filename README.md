@@ -36,6 +36,7 @@ On M1 Macos run Python tensorflow script in a terminal with `conda activate tens
 
 - once conda script has installed conda
 - `conda create --name tensorflow python=3.9` used to create the tensorlow environment
+- `conda activate tensorflow` in order to install into the tensorflow enviroment
 - `conda install -c conda-forge tensorflow`
 - you can install tensorflow via calling `conda install tensorflow` and `conda install pip` eventually `conda install pillow`
 - `pip install pillow` with pip installed via conda e.g. (pip is the python package manager)
